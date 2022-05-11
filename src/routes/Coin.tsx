@@ -79,7 +79,6 @@ const Tab = styled.span<{ isActive: boolean }>`
   }
 `;
 
-
 interface RouteState {
   name: string;
 }
@@ -140,9 +139,9 @@ interface PriceData {
 }
 
 function Coin() {
-  const [loading, setLoading] = useState(true);
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
+  const [loading, setLoading] = useState(true);
   const [info, setInfo] = useState<InfoData>();
   const [priceInfo, setPriceInfo] = useState<PriceData>();
   const priceMatch = useRouteMatch("/:coinId/price");
