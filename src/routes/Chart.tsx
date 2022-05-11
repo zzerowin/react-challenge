@@ -29,7 +29,7 @@ function Chart({ coinId }: ChartProps) {
           type="line"
           series={[
             {
-              name: "가격($)",
+              name: "가격",
               data: data?.map((price => price.close)) ?? [],
             },
           ]}
@@ -59,7 +59,19 @@ function Chart({ coinId }: ChartProps) {
               axisTicks: { show: false },
               axisBorder: { show: false },
               labels: { show: false },
+              type: "datetime",
+              categories: data?.map((price) => price.time_close),
             },
+            fill: {
+              type: "gradient",
+              gradient: { gradientToColors: ["#f5f6fa"], stops: [0, 100] },
+            },
+            colors: ["#00a8ff"],
+            tooltip: {
+              y: {
+                formatter: (value) => `$ ${value.toFixed(2)}`,
+              }
+            }
           }}
         />
       }
