@@ -28,7 +28,7 @@ function Price({ coinId, isDark }: ChartProps) {
 
   return (
     <div>
-      {isLoading ? "Loading chart..." :
+      {isLoading ? "Loading price..." :
         <ReactApexChart
           type="line"
           series={[

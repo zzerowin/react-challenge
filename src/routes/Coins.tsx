@@ -102,14 +102,20 @@ function Coins({ toggleDark }: ICoinsProps) {
       <Helmet>
         <title>업비트</title>
       </Helmet>
-      <Header>
-        <Title>업비트</Title>
-        <Items>
-          <Item onClick={toggleDark}>
-            Toggle Mode
-          </Item>
-        </Items>
-      </Header>
+      <div style={{
+        justifyContent: "center",
+        alignItems: "center",
+        display: "flex",
+      }}>
+        <Header>
+          <Title>업비트</Title>
+        </Header>
+      </div>
+      <Items>
+        <Item onClick={toggleDark}>
+          Toggle Mode
+        </Item>
+      </Items>
 
       {isLoading ? (
         <Loader>Loading...</Loader>
