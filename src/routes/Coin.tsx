@@ -7,6 +7,7 @@ import Price from "./Price";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet"
 
+
 import { fetchCoinInfo, fetchCoins, fetchCoinTickers } from "../api";
 
 
@@ -81,6 +82,24 @@ const Tab = styled.span<{ isActive: boolean }>`
   a {
     display: block;
   }
+`;
+
+const Items = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 25px 0px;
+  gap: 10px;
+`;
+
+const Item = styled.span`
+  margin-top: -30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px 0px;
+  border-radius: 10px;
 `;
 
 interface RouteState {
@@ -172,6 +191,20 @@ function Coin() {
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
       </Header>
+
+      <Items>
+        <Item>
+          <Link to="/">
+            Back
+          </Link>
+        </Item>
+        <Item>
+          <div>
+            Toggle Mode
+          </div>
+        </Item>
+      </Items>
+
       {loading ? (
         <Loader>Loading...</Loader>
       ) : (
@@ -187,7 +220,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>{tickersData?.quotes.USD.price}</span>
+              <span>{tickersData?.quotes.USD.price.toFixed(2)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
