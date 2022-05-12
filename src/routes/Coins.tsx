@@ -12,8 +12,10 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
+  margin-top: 10px;
+  margin-bottom: 10px;
   height: 10vh;
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
 `;
@@ -23,28 +25,28 @@ const CoinList = styled.ul`
 `
 
 const Coin = styled.li`
-  background-color: white;
-  color: ${props => props.theme.bgColor};
-  margin-bottom: 10px;
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
+  margin-bottom: 10px;
+  border: 1px solid white;
   a {
     display: flex;
     align-items: center;
     padding: 20px;
     transition: color 0.2s ease-in;
   }
-
   &:hover {
     a {
-      color: ${props => props.theme.accentColor};
+      color: ${(props) => props.theme.accentColor};
     }
   }
 `;
 
 const Title = styled.h1`
   font-size: 48px;
-  color: ${props => props.theme.accentColor};
-`
+  color: ${(props) => props.theme.accentColor};
+`;
 
 const Loader = styled.div`
   text-align: center;
@@ -57,6 +59,26 @@ const Img = styled.img`
   margin-right: 10px;
 `
 
+const Items = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 25px 0px;
+  gap: 10px;
+`;
+
+const Item = styled.span`
+  margin-top: -30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 7px 0px;
+  border-radius: 10px;
+  color: white;
+  cursor: auto;
+`;
+
 interface ICoin {
   id: string,
   name: string,
@@ -67,7 +89,11 @@ interface ICoin {
   type: string,
 }
 
-function Coins() {
+interface ICoinsProps {
+  toggleDark: () => void;
+}
+
+function Coins({ toggleDark }: ICoinsProps) {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
 
   return (
@@ -77,7 +103,11 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>업비트</Title>
+        <Items>
+          <Item onClick={toggleDark}>Toggle Mode</Item>
+        </Items>
       </Header>
+
       {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
