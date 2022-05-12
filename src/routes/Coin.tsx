@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Switch, Route, useLocation, useParams } from "react-router";
 import { Link, useRouteMatch } from "react-router-dom";
 import styled from "styled-components";
@@ -8,7 +7,7 @@ import { useQuery } from "react-query";
 import { Helmet } from "react-helmet"
 
 
-import { fetchCoinInfo, fetchCoins, fetchCoinTickers } from "../api";
+import { fetchCoinInfo, fetchCoinTickers } from "../api";
 
 
 interface RouteParams {

@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ReactApexChart from "react-apexcharts"
-import ApexChart from "react-apexcharts";
 
 interface IHistorical {
   time_open: string;
@@ -56,7 +55,7 @@ function Chart({ coinId, isDark }: ChartProps) {
               height: 350,
               width: 500,
               toolbar: {
-                show:false,
+                show: false,
               },
               background: "transparent",
             },

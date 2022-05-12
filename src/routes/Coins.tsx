@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
-import { useEffect, useState } from "react";
 import { fetchCoins } from "../api";
 import { Helmet } from "react-helmet";
 
