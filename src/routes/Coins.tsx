@@ -104,7 +104,9 @@ function Coins({ toggleDark }: ICoinsProps) {
       <Header>
         <Title>업비트</Title>
         <Items>
-          <Item onClick={toggleDark}>Toggle Mode</Item>
+          <Item onClick={toggleDark}>
+            Toggle Mode
+          </Item>
         </Items>
       </Header>
 
