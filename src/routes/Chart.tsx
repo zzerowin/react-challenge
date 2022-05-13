@@ -38,10 +38,10 @@ function Chart({ coinId, isDark }: ChartProps) {
                 data?.map((price) => {
                   return [
                     Date.parse(price.time_close),
-                    price.open.toFixed(3),
-                    price.high.toFixed(3),
-                    price.low.toFixed(3),
-                    price.close.toFixed(3),
+                    price.open.toFixed(2),
+                    price.high.toFixed(2),
+                    price.low.toFixed(2),
+                    price.close.toFixed(2),
                   ]
                 }) as any,
             },
