@@ -92,6 +92,7 @@ interface ICoin {
 }
 
 interface ICoinsProps {
+
 }
 
 function Coins() {
@@ -114,9 +115,7 @@ function Coins() {
         </Header>
       </div>
       <Items>
-        <Item onClick={toggleDarkAtom}>
-          Toggle Mode
-        </Item>
+        <Item onClick={toggleDarkAtom}>Toggle Mode</Item>
       </Items>
 
       {isLoading ? (
