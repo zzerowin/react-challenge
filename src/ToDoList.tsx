@@ -1,50 +1,53 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-/*function ToDoList() {
-  const [toDo, setToDo] = useState("");
-  const [toDoError, setToDoError] = useState("");
-  const onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { currentTarget: { value } } = e;
-    setToDoError("");
-    setToDo(value);
+function ToDoList() {
+  const { register, handleSubmit, formState } = useForm();
+  const onValid = (data: any) => {
+    console.log(data);
   };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (toDo.length < 10) {
-      return setToDoError("To do should be longer");
-    }
-    console.log('submit');
-  };
+  console.log(formState.errors);
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <input onChange={onChange} value={toDo} placeholder="Write a to do"/>
+      <form
+        style={{ display: "flex", flexDirection: "column" }}
+        onSubmit={handleSubmit(onValid)}
+      >
+        <input
+          {...register("Email", { required: true })}
+          placeholder="Email"
+        />
+        <input
+          {...register("firstName", { required: true })}
+          placeholder="First Name"
+        />
+        <input
+          {...register("lastName", { required: true })}
+          placeholder="Last Name"
+        />
+        <input
+          {...register("userName", { required: true, minLength: 6 })}
+          placeholder="User name"
+        />
+        <input
+          {...register("password", { required: true, minLength: 6 })}
+          placeholder="password"
+        />
+        <input
+          {...register("password1", {
+              required: "Password is required",
+              minLength: {
+                value: 5,
+                message: "Your password is too short.",
+              },
+            })}
+          placeholder="password1"
+        />
         <button>Add</button>
-        {toDoError !== "" ? toDoError : null}
       </form>
     </div>
   );
-}*/
-
-function ToDoList() {
-  const { register, watch } = useForm();
-  console.log(watch())
-
-  return (
-    <div>
-      <form>
-        <input {...register("Email")} placeholder="Email"/>
-        <input {...register("firstName")} placeholder="First Name"/>
-        <input {...register("lastName")} placeholder="Last Name"/>
-        <input {...register("userName")} placeholder="User name"/>
-        <input {...register("password")} placeholder="password"/>
-        <input {...register("password1")} placeholder="password1"/>
-        <button>Add</button>
-      </form>
-    </div>
-  )
 }
 
 export default ToDoList;
