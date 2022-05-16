@@ -8,6 +8,8 @@ import { Helmet } from "react-helmet"
 
 
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 
 interface RouteParams {
@@ -99,6 +101,7 @@ const Item = styled.span`
   background-color: rgba(0, 0, 0, 0.5);
   padding: 7px 0px;
   border-radius: 10px;
+  cursor: pointer;
 `;
 
 interface RouteState {
@@ -160,7 +163,8 @@ interface PriceData {
   };
 }
 
-interface ICoinProps {}
+interface ICoinProps {
+}
 
 function Coin({}: ICoinProps) {
   const { coinId } = useParams<RouteParams>();
@@ -179,7 +183,8 @@ function Coin({}: ICoinProps) {
     }
   );
   const loading = infoLoading || tickersLoading;
-
+  const setDarkAtom = useSetRecoilState(isDarkAtom);
+  const toggleDarkAtom = () => setDarkAtom(prev => !prev);
   return (
     <Container>
       <Helmet>
@@ -199,7 +204,7 @@ function Coin({}: ICoinProps) {
             Back
           </Link>
         </Item>
-        <Item>
+        <Item onClick={toggleDarkAtom}>
           Toggle Mode
         </Item>
       </Items>
@@ -245,16 +250,18 @@ function Coin({}: ICoinProps) {
 
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price isDark={true} coinId={coinId} />
+              <Price coinId={coinId}/>
             </Route>
             <Route path={`/:coinId/chart`}>
-              <Chart coinId={coinId} />
+              <Chart coinId={coinId}/>
             </Route>
           </Switch>
         </>
       )}
     </Container>
   );
+
+
 }
 
 export default Coin;
