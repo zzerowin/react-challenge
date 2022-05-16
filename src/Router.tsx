@@ -4,23 +4,22 @@ import Coin from "./routes/Coin";
 import Coins from "./routes/Coins";
 
 interface IRouterProps {
-  toggleDark: () => void;
-  isDark: boolean;
+
 }
 
-function Router({ toggleDark, isDark }: IRouterProps) {
+function Router({}: IRouterProps) {
   return (
     <HashRouter>
       <Switch>
         <Route path="/:coinId">
-          <Coin isDark={isDark} toggleDark={toggleDark} />
+          <Coin/>
         </Route>
         <Route path="/">
-          <Coins toggleDark={toggleDark} />
+          <Coins/>
         </Route>
       </Switch>
     </HashRouter>
-  )
+  );
 }
 
 export default Router;

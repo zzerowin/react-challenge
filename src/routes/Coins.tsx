@@ -90,10 +90,9 @@ interface ICoin {
 }
 
 interface ICoinsProps {
-  toggleDark: () => void;
 }
 
-function Coins({ toggleDark }: ICoinsProps) {
+function Coins() {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
 
   return (
@@ -110,11 +109,11 @@ function Coins({ toggleDark }: ICoinsProps) {
           <Title>업비트</Title>
         </Header>
       </div>
-      <Items>
-        <Item onClick={toggleDark}>
-          Toggle Mode
-        </Item>
-      </Items>
+      {/*<Items>*/}
+      {/*  <Item onClick={toggleDark}>*/}
+      {/*    Toggle Mode*/}
+      {/*  </Item>*/}
+      {/*</Items>*/}
 
       {isLoading ? (
         <Loader>Loading...</Loader>
