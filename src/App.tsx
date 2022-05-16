@@ -1,13 +1,9 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import Router from "./Router";
-import { ReactQueryDevtools } from 'react-query/devtools'
-import { darkTheme, lightTheme } from "./theme";
-import { useState } from "react";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "./atoms";
+import { createGlobalStyle } from "styled-components";
+import ToDoList from "./ToDoList";
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -28,58 +24,65 @@ const GlobalStyle = createGlobalStyle`
     font: inherit;
     vertical-align: baseline;
   }
+
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure,
   footer, header, hgroup, main, menu, nav, section {
     display: block;
   }
+
   /* HTML5 hidden-attribute fix for newer browsers */
   *[hidden] {
     display: none;
   }
+
   body {
     line-height: 1;
   }
+
   menu, ol, ul {
     list-style: none;
   }
+
   blockquote, q {
     quotes: none;
   }
+
   blockquote:before, blockquote:after,
   q:before, q:after {
     content: '';
     content: none;
   }
+
   table {
     border-collapse: collapse;
     border-spacing: 0;
   }
+
   * {
     box-sizing: border-box;
   }
+
   body {
     font-weight: 300;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: ${props => props.theme.bgColor};
-    color:${(props) => props.theme.textColor};
+    color: ${(props) => props.theme.textColor};
     line-height: 1.2;
   }
+
   a {
-    text-decoration:none;
+    text-decoration: none;
     color: inherit;
   }
 `;
 
 function App() {
-  const isDark = useRecoilValue(isDarkAtom)
+
   return (
     <>
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <GlobalStyle />
-        <Router />
-        <ReactQueryDevtools initialIsOpen={true}/>
-      </ThemeProvider>
+      <GlobalStyle/>
+      <ToDoList />
     </>
   );
 }
