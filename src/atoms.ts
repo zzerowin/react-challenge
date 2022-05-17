@@ -1,9 +1,9 @@
 import { atom, selector } from "recoil";
 
 export enum Categories {
-  'TO_DO',
-  'DOING',
-  'DONE',
+  'TO_DO'= "TO_DO",
+  'DOING'= "TO_DO",
+  'DONE'= "TO_DO",
 }
 
 export interface IToDo {
