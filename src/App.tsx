@@ -5,6 +5,8 @@ import Search from "./Routes/Search";
 import Header from "./components/Header";
 
 function App() {
+
+
   return (
     <Router>
       <Header />
